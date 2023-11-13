@@ -16,14 +16,14 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	char c;
 	size_t num = 0;
 	static char buff[BUFFER_SIZE];
-	static size_t idx, static size_t B_read;
+	static size_t idx, B_read;
 
 	(void)stream;
 	if (lineptr == NULL || n == NULL)
 		return (-1);
 	if (*lineptr == NULL || *n == 0)
 
-		*n = BUFFER_SIZE;
+	*n = BUFFER_SIZE;
 	*lineptr = malloc(*n);
 	for (;;)
 	{
