@@ -32,13 +32,13 @@ void our_printf(char *str);
 
 
 /* Prototypes for utility functions */
-int _atoi(char *s);
+int _atoi(const char *s);
 char *_strdup(char *str);
 int _strlen(const char *s);
 char *_getenv(const char *nom);
-int _strcmp(char *s1, char *s2);
-char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
+int _strcmp(const char *s1, const char *s2);
+char *_strcpy(char *dest, const char *src);
+char *_strcat(char *dest, const char *src);
 char *str_concat(char *s1, char *s2);
 char *_strchr(const char *s, char c);
 char *_strtok(char *str, const char *delim);
@@ -58,9 +58,13 @@ int _delim(char c, const char *delim);
 /* Function prototypes */
 void blinking_prompt(void);
 void print_env(char **environ);
+void handle_cd(const char *dir);
+void exit_shell(const char *status);
+int _unsetenv(const char *var_name);
 void exec_user_input(char *user_input);
 void handle_path(char **cmd, int count);
 void read_user_input(char *user_input, size_t len);
+int _setenv(const char *var_name, const char *value, int overwrite);
 
 
 
