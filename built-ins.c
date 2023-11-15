@@ -17,12 +17,12 @@ int exit_shell(const char *status)
 		exit_status = strtol(status, &endptr, 10);
 		if (*endptr != '\0')
 		{
-			fprintf(stderr, "exit: Illegal number: %s\n", status);
+			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", status);
 			return (2);
 		}
 		if (exit_status < 0)
 		{
-			fprintf(stderr, "exit: Illegal number: %s\n", status);
+			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", status);
 			return (2);
 		}
 		exit(exit_status);
