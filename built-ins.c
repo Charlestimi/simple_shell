@@ -25,7 +25,7 @@ void exit_shell(const char *status)
 			fprintf(stderr, "exit: Illegal number: %s\n", status);
 			return;
 		}
-		exit(exit_status);
+		exit(2);
 	}
 	else
 		exit(0);
