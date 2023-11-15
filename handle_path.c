@@ -37,27 +37,24 @@ void handle_path(char **cmd, int count)
 
 	while (path_tok != NULL)
 	{
-		cmd_path = (char *)malloc(_strlen(path_tok) + _strlen(cmd[0]) + 2);
-		if (cmd_path == NULL)
+		if (path_tok[0] != '\0')
 		{
-			perror("Error allocating memeory");
-			cleanup(cmd, count);
-			exit(EXIT_FAILURE);
-		}
-		_strcpy(cmd_path, path_tok);
-		_strcat(cmd_path, "/");
-		_strcat(cmd_path, cmd[0]);
+			cmd_path = (char *)malloc(_strlen(path_tok) + _strlen(cmd[0]) + 2);
+			_strcpy(cmd_path, path_tok);
+			_strcat(cmd_path, "/");
+			_strcat(cmd_path, cmd[0]);
 
-		if (access(cmd_path, X_OK) == 0)
-		{
-			execve(cmd_path, cmd, environ);
-			perror("Execution failed");
+			if (access(cmd_path, X_OK) == 0)
+			{
+				execve(cmd_path, cmd, environ);
+				perror("Execution failed");
+				free(cmd_path);
+				cleanup(cmd, count);
+				exit(EXIT_FAILURE);
+			}
+
 			free(cmd_path);
-			cleanup(cmd, count);
-			exit(EXIT_FAILURE);
 		}
-
-		free(cmd_path);
 		path_tok = _strtok(NULL, ":");
 	}
 	perror("./hsh");
