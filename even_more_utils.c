@@ -51,6 +51,7 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 /**
  * _realloc - This function reallocates memory block using malloc and free
  * @ptr: pointer to the previoulsy allocated memory
+ * @old_size: size of old memory block
  * @new_size: size of the new memory block
  *
  * Return: pointer to the newly allocated memory block
