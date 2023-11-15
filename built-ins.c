@@ -10,7 +10,7 @@
 int exit_shell(const char *status)
 {
 	char *endptr;
-	int exit_status;
+	int exit_status = 2;
 
 	if (status != NULL)
 	{
@@ -18,17 +18,17 @@ int exit_shell(const char *status)
 		if (*endptr != '\0')
 		{
 			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", status);
-			return (2);
+			return;
 		}
 		if (exit_status < 0)
 		{
 			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", status);
-			return (2);
+			return;
 		}
 		exit(exit_status);
 	}
 	else
-		exit(2);
+		exit(0);
 	return (0);
 }
 
