@@ -9,16 +9,21 @@
 
 void exit_shell(const char *status)
 {
+	char *endptr;
 	int exit_status;
 
 	if (status != NULL)
 	{
-		exit_status = _atoi(status);
-		
+		exit_status = strtol(status, &endptr, 10);
+		if (*endptr != '\0')
+		{
+			fprintf(stderr, "exit: Illegal number: %s\n", status);
+			return;
+		}
 		if (exit_status < 0)
 		{
 			fprintf(stderr, "exit: Illegal number: %s\n", status);
-			exit(2);
+			return;
 		}
 		exit(exit_status);
 	}

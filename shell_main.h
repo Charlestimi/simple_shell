@@ -20,6 +20,10 @@
 #include <limits.h>
 #include <malloc.h>
 #include <stddef.h>
+#include <ctype.h>
+
+int _isdigit(int c);
+
 
 
 extern char **environ;
