@@ -19,13 +19,15 @@ void exit_shell(const char *status)
 		{
 			fprintf(stderr, "exit: Illegal number: %s\n", status);
 			return;
+			exit(2);
 		}
 		if (exit_status < 0)
 		{
 			fprintf(stderr, "exit: Illegal number: %s\n", status);
 			return;
+			exit(2);
 		}
-		exit(2);
+		exit(exit_status);
 	}
 	else
 		exit(0);
