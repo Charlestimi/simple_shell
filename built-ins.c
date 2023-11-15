@@ -14,6 +14,12 @@ void exit_shell(const char *status)
 	if (status != NULL)
 	{
 		exit_status = _atoi(status);
+		
+		if (exit_status < 0)
+		{
+			fprintf(stderr, "exit: Illegal number: %s\n", status);
+			exit(2);
+		}
 		exit(exit_status);
 	}
 	else
