@@ -62,6 +62,9 @@ char *_strcat(char *dest, const char *src)
 {
 	int i = 0, j = 0;
 
+	if (dest == NULL || src == NULL)
+		return (dest);
+
 	while (dest[i] != '\0')
 		i++;
 
