@@ -38,6 +38,12 @@ void handle_path(char **cmd, int count)
 	while (path_tok != NULL)
 	{
 		cmd_path = (char *)malloc(_strlen(path_tok) + _strlen(cmd[0]) + 2);
+		if (cmd_path == NULL)
+		{
+			perror("Error allocating memeory");
+			cleanup(cmd, count);
+			exit(EXIT_FAILURE);
+		}
 		_strcpy(cmd_path, path_tok);
 		_strcat(cmd_path, "/");
 		_strcat(cmd_path, cmd[0]);

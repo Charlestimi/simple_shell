@@ -88,7 +88,7 @@ int _unsetenv(const char *var_name)
  * _getenv - gets an environment variable.
  * @nom: variable name.
  *
- * Return: returns pointer to value in environment or NUll if not found.
+ * Return: returns pointer to value in environment or NULL if not found.
  */
 
 char *_getenv(const char *nom)
