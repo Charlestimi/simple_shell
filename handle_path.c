@@ -37,24 +37,23 @@ void handle_path(char **cmd, int count)
 
 	while (path_tok != NULL)
 	{
-		if (path_tok[0] != '\0')
+		if (path_tok == NULL)
+			break;
+		cmd_path = (char *)malloc(_strlen(path_tok) + _strlen(cmd[0]) + 2);
+		_strcpy(cmd_path, path_tok);
+		_strcat(cmd_path, "/");
+		_strcat(cmd_path, cmd[0]);
+
+		if (access(cmd_path, X_OK) == 0)
 		{
-			cmd_path = (char *)malloc(_strlen(path_tok) + _strlen(cmd[0]) + 2);
-			_strcpy(cmd_path, path_tok);
-			_strcat(cmd_path, "/");
-			_strcat(cmd_path, cmd[0]);
-
-			if (access(cmd_path, X_OK) == 0)
-			{
-				execve(cmd_path, cmd, environ);
-				perror("Execution failed");
-				free(cmd_path);
-				cleanup(cmd, count);
-				exit(EXIT_FAILURE);
-			}
-
+			execve(cmd_path, cmd, environ);
+			perror("Execution failed");
 			free(cmd_path);
+			cleanup(cmd, count);
+			exit(EXIT_FAILURE);
+	
 		}
+		free(cmd_path);
 		path_tok = _strtok(NULL, ":");
 	}
 	perror("./hsh");

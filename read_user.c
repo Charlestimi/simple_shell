@@ -16,7 +16,7 @@ void read_user_input(char *user_input, size_t len)
 	{
 		if (feof(stdin))
 		{
-			our_printf("\nGoodbye!\n");
+			/*our_printf("Goodbye!\n");*/
 			exit(EXIT_SUCCESS);
 		}
 		else
