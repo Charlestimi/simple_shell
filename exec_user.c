@@ -15,11 +15,11 @@ void exec_user_input(char *user_input)
 
 	token = _strtok(user_input, " ");
 	while (token != NULL && count < MAX_CMD_COUNT - 1)
-	{       cmd = _realloc(cmd, count * sizeof(char *), (count + 1) * sizeof(char *));
+	{       cmd = realloc(cmd, (count + 1) * sizeof(char *));
 		cmd[count] = _strdup(token);
 		count++;
 		token = _strtok(NULL, " "); }
-	cmd = _realloc(cmd, count * sizeof(char *), (count + 1) * sizeof(char *));
+	cmd = realloc(cmd, (count + 1) * sizeof(char *));
 	cmd[count] = NULL;
 	if (count > 0 && _strcmp(cmd[0], "exit") == 0)
 	{

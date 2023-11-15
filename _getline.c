@@ -115,7 +115,7 @@ int handle_char(char c, char **lineptr, size_t *n, size_t *num)
 void realloc_lineptr(char **lineptr, size_t *n)
 {
 	*n += BUFFER_SIZE;
-	*lineptr = _realloc(*lineptr, *n - BUFFER_SIZE, *n);
+	*lineptr = realloc(*lineptr, *n);
 	if (*lineptr == NULL)
 	{
 		perror("Memory reallocation failed");
