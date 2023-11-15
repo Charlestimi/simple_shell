@@ -22,33 +22,34 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	if (lineptr == NULL || n == NULL)
 		return (-1);
 	if (*lineptr == NULL || *n == 0)
-
-	*n = BUFFER_SIZE;
-	*lineptr = malloc(*n);
+	{	*n = BUFFER_SIZE;
+		*lineptr = malloc(*n);
+		if (*lineptr == NULL)
+		{	perror("Memory allocation failed");
+			exit(EXIT_FAILURE); } }
 	for (;;)
 	{
 		if (idx == B_read)
-		{
-			B_read = read(STDIN_FILENO, buff, BUFFER_SIZE);
+		{	B_read = read(STDIN_FILENO, buff, BUFFER_SIZE);
 			if (B_read <= 0)
 			{
 				if (num == 0)
 					return (-1); }
-			idx = 0;
-		}
+			idx = 0; }
 		while (idx < B_read)
 		{
 			c = buff[idx++];
 			if (c == '\n')
-				return (num);
-			if (num >= *n)
-			{
-				*n += BUFFER_SIZE;
+			{	(*lineptr)[num] = '\0';
+				return (num); }
+			if (num + 1 >= *n)
+			{	*n += BUFFER_SIZE;
 				*lineptr = realloc(*lineptr, *n);
 				if (*lineptr == NULL)
 				{
 					perror("Memory reallocation failed");
 					exit(EXIT_FAILURE); } }
 			(*lineptr)[num++] = c; } }
-	return (num); }
+	return (num);
+}
 
