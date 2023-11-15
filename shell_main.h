@@ -42,7 +42,7 @@ char *_strcat(char *dest, const char *src);
 char *str_concat(char *s1, char *s2);
 char *_strchr(const char *s, char c);
 char *_strtok(char *str, const char *delim);
-void *_realloc(void *ptr, unsigned int new_size);
+void *_realloc(void *ptr, size_t old_size, size_t new_size);
 char *_memcpy(char *dest, char *src, unsigned int n);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int _strncmp(const char *str1, const char *str2, size_t n);
