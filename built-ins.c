@@ -8,28 +8,17 @@
  * Return: 0 Always
  */
 
-int exit_shell(const char *status)
+void exit_shell(const char *status)
 {
-	char *endptr;
 	int exit_status;
 
 	if (status != NULL)
 	{
-		exit_status = strtol(status, &endptr, 10);
-		if (*endptr != '\0')
-		{
-			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", status);
-			return (2);
-		}
-		if (exit_status < 0)
-		{
-			fprintf(stderr, "./hsh: 1: exit: Illegal number: %s\n", status);
-			return (2);
-		}
-		return (exit_status);
+		exit_status = _atoi(status);
+		exit(exit_status);
 	}
 	else
-		return (0);
+		exit(0);
 }
 
 
