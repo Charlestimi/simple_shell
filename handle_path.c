@@ -22,12 +22,13 @@ void cleanup(char **cmd, int count)
 
 
 
-/*
+/**
  * handle_path - This function takes care of the PATH
  * @cmd: array to the path
  * @count: string count
  *
  */
+
 void handle_path(char **cmd, int count)
 {
 	char *cmd_path = NULL;

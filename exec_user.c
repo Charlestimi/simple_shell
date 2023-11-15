@@ -14,7 +14,7 @@ void exec_user_input(char *user_input)
 	(void)user_input;
 	token = _strtok(user_input, " ");
 	while (token != NULL && count < MAX_CMD_COUNT - 1)
-	{       cmd = _realloc(cmd, count * sizeof(char *), (count + 1) * sizeof(char *));
+	{	cmd = _realloc(cmd, count * sizeof(char *), (count + 1) * sizeof(char *));
 		cmd[count] = _strdup(token);
 		count++;
 		token = _strtok(NULL, " "); }
@@ -47,5 +47,4 @@ void exec_user_input(char *user_input)
 			handle_path(cmd, count); }
 	else
 	{       waitpid(baby_pid, &status, 0);
-		cleanup(cmd, count); }
-}
+		cleanup(cmd, count); } }
