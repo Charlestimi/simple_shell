@@ -12,7 +12,6 @@ void exec_user_input(char *user_input)
 	char *token, **cmd = NULL;
 
 	(void)user_input;
-
 	token = _strtok(user_input, " ");
 	while (token != NULL && count < MAX_CMD_COUNT - 1)
 	{       cmd = realloc(cmd, (count + 1) * sizeof(char *));

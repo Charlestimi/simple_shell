@@ -84,20 +84,32 @@ char *str_concat(char *s1, char *s2)
 
 int _atoi(const char *s)
 {
-	int result = 0;
-	int sign = 1;
-	int i = 0;
+	int i = 0, d = 0, n = 0, f = 0;
+	int len = 0, digit = 0;
 
-	while (s[i] == ' ')
-		i++;
-	if (s[i] == '-' || s[i] == '+')
-		sign = (s[i++] == '-') ? -1 : 1;
-	while (_isdigit(s[i]))
+	while (s[len] != '\0')
+		len++;
+	while (i < len && f == 0)
 	{
-		result = result * 10 + (s[i] - '0');
+		if (s[i] == '-')
+			++d;
+
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+			f = 0;
+		}
 		i++;
 	}
-	return (sign * result);
+	if (f == 0)
+		return (0);
+	return (n);
 }
 
 
@@ -158,4 +170,3 @@ char *_strtok(char *str, const char *delim)
 
 	return (tok_start);
 }
-

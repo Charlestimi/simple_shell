@@ -22,11 +22,9 @@
 #include <stddef.h>
 #include <ctype.h>
 
-int _isdigit(int c);
-
-
 
 extern char **environ;
+
 
 /* Prototypes for custom printing functions */
 int _putchar(char c);
@@ -55,10 +53,7 @@ int _strncmp(const char *str1, const char *str2, size_t n);
 /* Prototypes for helping functions */
 void cleanup(char **cmd, int count);
 int _delim(char c, const char *delim);
-void init_lineptr(char **lineptr, size_t *n);
-void fill_buff(char *buff, size_t *idx, size_t *B_read);
-int handle_char(char c, char **lineptr, size_t *n, size_t *num);
-void realloc_lineptr(char **lineptr, size_t *n);
+
 
 
 /* Function prototypes */

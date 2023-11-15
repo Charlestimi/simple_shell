@@ -5,6 +5,7 @@
  * exit_shell - This function handles argument for the built-in exit ommand
  * @status: integer used to exit the shell
  *
+ * Return: 0 Always
  */
 
 int exit_shell(const char *status)
