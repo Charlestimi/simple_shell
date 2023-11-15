@@ -28,7 +28,7 @@ int exit_shell(const char *status)
 		exit(exit_status);
 	}
 	else
-		exit(0);
+		exit(2);
 	return (0);
 }
 
