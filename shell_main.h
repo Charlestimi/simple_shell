@@ -24,7 +24,6 @@
 
 extern char **environ;
 
-
 /* Prototypes for custom printing functions */
 int _putchar(char c);
 void our_printf(char *str);
