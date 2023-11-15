@@ -54,8 +54,7 @@ void handle_path(char **cmd, int count)
 		free(cmd_path);
 		path_tok = _strtok(NULL, ":");
 	}
-
-	perror("Command not found");
+	perror("./hsh");
 	cleanup(cmd, count);
 	exit(EXIT_FAILURE);
 }
