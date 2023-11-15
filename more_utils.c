@@ -82,7 +82,7 @@ char *str_concat(char *s1, char *s2)
  * Return: the int converted from the string
  */
 
-int _atoi(char *s)
+int _atoi(const char *s)
 {
 	int i = 0, d = 0, n = 0, f = 0;
 	int len = 0, digit = 0;

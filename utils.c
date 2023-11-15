@@ -13,6 +13,9 @@ int _strlen(const char *s)
 
 	i = 0;
 
+	if (s == NULL)
+		return (0);
+
 	while (s[i] != '\0')
 	{
 		i++;
@@ -32,7 +35,7 @@ int _strlen(const char *s)
  * Return: the pointer to 'dest'
  */
 
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, const char *src)
 {
 	int i = 0;
 
@@ -55,7 +58,7 @@ char *_strcpy(char *dest, char *src)
  * Return: a pointer to the resulting string (dest)
  */
 
-char *_strcat(char *dest, char *src)
+char *_strcat(char *dest, const char *src)
 {
 	int i = 0, j = 0;
 
@@ -82,7 +85,7 @@ char *_strcat(char *dest, char *src)
  * Return: 0 if s1 and s2 is equal
  */
 
-int _strcmp(char *s1, char *s2)
+int _strcmp(const char *s1, const char *s2)
 {
 	while (*s1 != '\0' && *s2 != '\0')
 	{

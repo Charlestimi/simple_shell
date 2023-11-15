@@ -33,10 +33,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			if (B_read <= 0)
 			{
 				if (num == 0)
-					return (-1);
-				else
-					break; }
-			idx = 0; }
+					return (-1); }
+			idx = 0;
+		}
 		while (idx < B_read)
 		{
 			c = buff[idx++];
