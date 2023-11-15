@@ -21,16 +21,18 @@ void exec_user_input(char *user_input)
 		token = _strtok(NULL, " "); }
 	cmd = _realloc(cmd, (count + 1) * sizeof(char *));
 	cmd[count] = NULL;
-	if (count > 0)
+	if (count > 0 && _strcmp(cmd[0], "exit") == 0)
 	{
-		if (_strcmp(cmd[0], "exit") == 0)
-		{       exit_shell((count > 1) ? cmd[1] : NULL);
-			cleanup(cmd, count);
-			return; }
-		else if (_strcmp(cmd[0], "cd") == 0)
-		{       handle_cd((count > 1) ? cmd[1] : NULL);
-			cleanup(cmd, count);
-			return; } }
+		if (count > 1)
+			exit_shell(cmd[1]);
+		else
+			exit_shell(NULL);
+		cleanup(cmd, count);
+		return; }
+	else if (count > 0 && _strcmp(cmd[0], "cd") == 0)
+	{	handle_cd((count > 1) ? cmd[1] : NULL);
+		cleanup(cmd, count);
+		return; }
 	baby_pid = fork();
 	if (baby_pid == -1)
 	{       perror("Fork unsuccessful");
