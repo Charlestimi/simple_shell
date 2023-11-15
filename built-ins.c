@@ -7,7 +7,7 @@
  *
  */
 
-void exit_shell(const char *status)
+int exit_shell(const char *status)
 {
 	char *endptr;
 	int exit_status;
@@ -18,19 +18,18 @@ void exit_shell(const char *status)
 		if (*endptr != '\0')
 		{
 			fprintf(stderr, "exit: Illegal number: %s\n", status);
-			return;
-			exit(2);
+			return (2);
 		}
 		if (exit_status < 0)
 		{
 			fprintf(stderr, "exit: Illegal number: %s\n", status);
-			return;
-			exit(2);
+			return (2);
 		}
 		exit(exit_status);
 	}
 	else
 		exit(0);
+	return (0);
 }
 
 

@@ -65,7 +65,7 @@ void realloc_lineptr(char **lineptr, size_t *n);
 void blinking_prompt(void);
 void print_env(char **environ);
 void handle_cd(const char *dir);
-void exit_shell(const char *status);
+int exit_shell(const char *status);
 int _unsetenv(const char *var_name);
 void exec_user_input(char *user_input);
 void handle_path(char **cmd, int count);
