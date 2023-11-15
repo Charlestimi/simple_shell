@@ -20,9 +20,11 @@
 #include <limits.h>
 #include <malloc.h>
 #include <stddef.h>
+#include <ctype.h>
 
 
 extern char **environ;
+
 
 /* Prototypes for custom printing functions */
 int _putchar(char c);
@@ -51,17 +53,14 @@ int _strncmp(const char *str1, const char *str2, size_t n);
 /* Prototypes for helping functions */
 void cleanup(char **cmd, int count);
 int _delim(char c, const char *delim);
-void init_lineptr(char **lineptr, size_t *n);
-void fill_buff(char *buff, size_t *idx, size_t *B_read);
-int handle_char(char c, char **lineptr, size_t *n, size_t *num);
-void realloc_lineptr(char **lineptr, size_t *n);
+
 
 
 /* Function prototypes */
 void blinking_prompt(void);
 void print_env(char **environ);
 void handle_cd(const char *dir);
-void exit_shell(const char *status);
+int exit_shell(const char *status);
 int _unsetenv(const char *var_name);
 void exec_user_input(char *user_input);
 void handle_path(char **cmd, int count);

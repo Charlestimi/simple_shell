@@ -50,7 +50,6 @@ void handle_path(char **cmd, int count)
 			free(cmd_path);
 			cleanup(cmd, count);
 			exit(EXIT_FAILURE);
-	
 		}
 		free(cmd_path);
 		path_tok = _strtok(NULL, ":");
