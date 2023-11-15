@@ -1,6 +1,5 @@
 #include "shell_main.h"
 
-#define BUFFER_SIZE 1024
 
 /**
  * _getline - custom get line function
