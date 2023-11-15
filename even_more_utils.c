@@ -56,13 +56,11 @@ char *_memcpy(char *dest, char *src, unsigned int n)
  * Return: pointer to the newly allocated memory block
  */
 
-void *_realloc(void *ptr, unsigned int new_size)
+void *_realloc(void *ptr, size_t old_size, size_t new_size)
 {
-	size_t old_size;
-	void *new_ptr;
-	size_t copy_size;
-
-	old_size = malloc_usable_size(ptr);
+	char *ptr_1;
+	char *old_ptr;
+	unsigned int i = 0;
 
 	if (new_size == old_size)
 		return (ptr);
@@ -74,13 +72,28 @@ void *_realloc(void *ptr, unsigned int new_size)
 	if (ptr == NULL)
 		return (malloc(new_size));
 
-	new_ptr = malloc(new_size);
-	if (new_ptr == NULL)
+	ptr_1 = malloc(new_size);
+	if (ptr_1 == NULL)
 		return (NULL);
 
-	copy_size = (new_size < old_size) ? new_size : old_size;
-	_memcpy(new_ptr, ptr, copy_size);
+	old_ptr = ptr;
 
+	if (new_size < old_size)
+	{
+		while (i < new_size)
+		{
+			ptr_1[i] = old_ptr[i];
+			i++;
+		}
+	}
+	if (new_size > old_size)
+	{
+		while (i < old_size)
+		{
+			ptr_1[i] = old_ptr[i];
+			i++;
+		}
+	}
 	free(ptr);
-	return (new_ptr);
+	return (ptr_1);
 }
